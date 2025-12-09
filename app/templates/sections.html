@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ url_for('main.index') }}">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ section_name }}</li>
+        </ol>
+    </nav>
+
+    <h1>Sections</h1>
+    <p>{{ sections|length }} results</p>
+    <div class="list-group">
+        {% for section in sections %}
+            {% include "_section.html" %}
+        {% endfor %}
+    </div>
+{% endblock %}

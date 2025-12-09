@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ url_for('main.index') }}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ url_for('main.courses', course_id=section.course_id) }}">{{ section.course_name }}</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ section.section_number }}</li>
+        </ol>
+    </nav>
+
+    <h1>{{ section.section_number }} <b>{{ section.course_name }}</b></h1>
+    <h2>{{ section.instructors[0] }}</h2><br>
+    <p><b>Format:</b> {{ section.component }}</p>
+    <p><b>Instructional Mode:</b> {{ section.instruction_mode }}</p>
+    <p><b>Campus:</b> {{ section.campus }}</p>
+    <p><b>Room:</b> {{ section.building}} {{ section.room }}</p>
+    <p><b>Day:</b> {{ section.days }}</p>
+    <p><b>Seats Open:</b> {{ section.open_seats }} of {{ section.total_seats }}</p>
+{% endblock %}

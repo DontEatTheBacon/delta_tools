@@ -1,0 +1,20 @@
+{% import "bootstrap_wtf.html" as wtf %}
+{% extends "base.html" %}
+
+{% block content %}
+<form action="" method="post">
+    {{ form.hidden_tag() }}
+    {{ wtf.form_field(form.query) }}
+    <div class="mb-3">
+        {{ form.submit(class="btn btn-primary") }}
+    </div>
+</form>
+{% if courses %}
+    <p>{{ courses|length }} results</p>
+    <div class="list-group">
+        {% for course in courses %}
+            {% include "_course.html" %}
+        {% endfor %}
+    </div>
+{% endif %}
+{% endblock %}

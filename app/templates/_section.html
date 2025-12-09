@@ -1,0 +1,14 @@
+<a href="{{ url_for('main.sections', course_id=section.course_id, section_id=section.id) }}" class="list-group-item list-group-item-action">
+    <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1">
+            {{ section.section_number }} <b>{{ section.course_name }}</b>
+        </h5>
+        {% if section.is_open() %}
+            <span class="badge text-bg-primary rounded-pill">{{ section.open_seats }} of {{ section.total_seats }} seats</span>
+        {% else %}
+            <span class="badge text-bg-secondary rounded-pill">Full</span>
+        {% endif %}
+    </div>
+    <p class="mb-1">{% if section.instructors %}{{ section.instructors[0] }}{% else %} Not yet assigned. {% endif %}</p>
+    <small>{{ section.component }}</small>
+</a>
