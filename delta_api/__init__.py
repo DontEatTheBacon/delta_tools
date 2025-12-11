@@ -1,1 +1,1 @@
-from delta_api.calls import get_sections, search_course, get_section
+from delta_api.client import DeltaAPI
