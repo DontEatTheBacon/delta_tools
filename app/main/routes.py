@@ -2,11 +2,11 @@ import sqlalchemy as sa
 from flask import flash, redirect, render_template, url_for
 from flask_login import current_user, login_required, login_user, logout_user
 
-import delta_api
-from app import db
+from app import db, delta_api
 from app.main import bp
-from app.main.forms import LoginForm, RegistrationForm, CourseSearchForm
+from app.main.forms import CourseSearchForm, LoginForm, RegistrationForm
 from app.models import User
+
 
 @bp.route('/')
 @bp.route('/index', methods=['GET', 'POST'])
@@ -14,7 +14,7 @@ from app.models import User
 def index():
     form = CourseSearchForm()
     if form.validate_on_submit():
-        courses = delta_api.search_course(form.query.data, 100)
+        courses = delta_api.search_course(form.query.data)
         return render_template('index.html', courses=courses, form=form)
     return render_template('index.html', form=form)
 

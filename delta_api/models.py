@@ -1,6 +1,7 @@
-from typing import List, Optional
 from dataclasses import dataclass
 from datetime import date, time
+from typing import List, Optional
+
 
 @dataclass
 class Section:

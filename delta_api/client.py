@@ -1,7 +1,4 @@
-from dataclasses import dataclass
-from datetime import date, time
 from typing import List, Optional
-from functools import lru_cache
 
 import requests
 
@@ -78,7 +75,6 @@ class DeltaAPI:
             print(f"Error fetching sections for course {course_id}: {e}")
             return []
 
-    @lru_cache(maxsize=128)
     def get_course_name(self, course_id) -> Optional[str]:
         data = self._request(
             GET_COURSE_NAME_QUERY,
@@ -115,7 +111,6 @@ class DeltaAPI:
             print(f"Error fetching terms: {e}")
             return []
 
-    @lru_cache(maxsize=128)
     def search_course(self, query: str, count=100, term: Optional[Term]=None) -> List[Course]:
         data = self._request(
             SEARCH_COURSE_QUERY,
@@ -162,7 +157,6 @@ class DeltaAPI:
             print(f"Error fetching section {course_id} {section_id}: {e}")
             return None
 
-    @lru_cache(maxsize=128)
     def get_instructor(self, name: str, term: Optional[Term]=None) -> Optional[Instructor]:
         data = self._request(
             GET_INSTRUCTOR_QUERY,

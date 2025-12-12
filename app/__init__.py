@@ -4,11 +4,13 @@ from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 
 from config import Config
+from delta_api import DeltaAPI
 
 db = SQLAlchemy()
 migrate = Migrate()
 login = LoginManager()
 login.login_view = 'main.login'
+delta_api = DeltaAPI()
 
 def create_app():
     app = Flask(__name__)
